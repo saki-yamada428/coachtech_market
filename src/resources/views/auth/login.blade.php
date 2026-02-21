@@ -4,24 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/auth/login.css') }}">
 @endsection
 
-@section('header__button')
-<nav>
-    <ul class="header-nav">
-        <li class="header-nav__item">
-            <a class="header-nav__link" href="/mypage">マイページ</a>
-        </li>
-        <li class="header-nav__item">
-            <form method="POST" action="/logout">
-                @csrf
-                <button class="header-nav__button">ログアウト</button>
-            </form>
-        </li>
-        <li class="header-nav__item">
-            <button class="header-nav__button_sell">出品</button>
-        </li>
-    </ul>
-</nav>
-@endsection
 
 @section('content')
 <div class="login-form__content">

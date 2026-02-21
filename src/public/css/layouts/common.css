@@ -1,12 +1,12 @@
 .header {
     background: #000;
-    /* height: 100px; */
+    background-size:cover;
+    /* max-width: 1230px; */
 }
 
 .header__inner {
     margin: 0 auto;
     padding: 0px 15px;
-    /* max-width: 1230px; */
 }
 
 .header-utilities {
@@ -22,9 +22,23 @@
     font-size: 24px;
     padding: 10px 15px;
 }
+img.logo {
+    width: 100%;
+}
+@media (max-width: 1024px){
+    img.logo {
+        width: 70%;
+    }
+}
+
 
 .header-utilities nav {
-    width: 18%;
+    width: 25%;
+}
+@media (max-width: 1024px){
+    .header-utilities nav{
+        width: 35%;
+    }
 }
 
 .header-nav {
@@ -46,6 +60,7 @@
     font-size: 16px;
     cursor: pointer;
     text-decoration: none;
+    /* margin: 0 10px; */
 }
 
 .header-nav__button_sell {
@@ -54,5 +69,75 @@
     color: black;
     font-size: 16px;
     cursor: pointer;
-    width: 70px;
+    /* width: 70px; */
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+/* ===========================
+    PC（デフォルト）
+    1025px 以上
+=========================== */
+body {
+    font-size: 16px;
+    padding: 24px;
+}
+
+/* ===========================
+    タブレット
+    768px ～ 1024px
+=========================== */
+@media (max-width: 1024px) {
+    body {
+        font-size: 15px;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 90%;
+    }
+}
+
+/* ===========================
+    スマホ（必要なら）
+    768px 以下
+=========================== */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 16px;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+}
+
+/* 画像は縮む */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* コンテナは可変にする */
+.container {
+    width: 100%;
+    max-width: 1200px; /* PC の最大幅 */
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Flex は折り返し可能に */
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Grid は自動調整 */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
 }

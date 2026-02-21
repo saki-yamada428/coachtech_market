@@ -4,24 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/items/show.css') }}">
 @endsection
 
-@section('header__button')
-<nav>
-    <ul class="header-nav">
-        <li class="header-nav__item">
-            <a class="header-nav__link" href="/mypage">マイページ</a>
-        </li>
-        <li class="header-nav__item">
-            <form method="POST" action="/logout">
-                @csrf
-                <button class="header-nav__button">ログアウト</button>
-            </form>
-        </li>
-        <li class="header-nav__item">
-            <button class="header-nav__button_sell">出品</button>
-        </li>
-    </ul>
-</nav>
-@endsection
 
 @section('content')
 <div class="item__detail">
@@ -62,9 +44,9 @@
         </div>
 
         <!-- {{-- 購入手続きボタン --}} -->
-        <button class="item__detail-button">
-            購入手続きへ
-        </button>
+        <form action="{{ route('items.purchase', $item->id) }}" method="GET">
+            <button class="item__detail-button">購入手続きへ</button>
+        </form>
 
         <!-- {{-- 説明文 --}} -->
         <div class="item__detail-description">
@@ -117,7 +99,7 @@
                 @foreach ($item->comments as $comment)
                     @if ($comment->user?->profile)
                         <img class="commented-user-picture"
-                        src="{{ asset($comment->user->profile->picture) }}"
+                        src="{{ asset('storage/' . $comment->user->profile->picture) }}"
                         alt="プロフィール画像">
                         {{ $comment->user->profile->nickname }}
                     @endif

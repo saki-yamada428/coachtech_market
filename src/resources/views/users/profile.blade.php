@@ -4,24 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/users/profile.css') }}">
 @endsection
 
-@section('header__button')
-<nav>
-    <ul class="header-nav">
-        <li class="header-nav__item">
-            <a class="header-nav__link" href="/mypage">マイページ</a>
-        </li>
-        <li class="header-nav__item">
-            <form method="POST" action="/logout">
-                @csrf
-                <button class="header-nav__button">ログアウト</button>
-            </form>
-        </li>
-        <li class="header-nav__item">
-            <button class="header-nav__button_sell">出品</button>
-        </li>
-    </ul>
-</nav>
-@endsection
 
 @section('content')
 <div class="profile-form__content">
@@ -31,7 +13,7 @@
     <!-- フォーム -->
     <form class="form" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
+        <!-- @method('PUT') -->
 
         <!-- プロフィール画像 -->
         <div class="form__group">
@@ -68,7 +50,7 @@
             </div>
         </div>
         <!-- プレビュー用 JavaScript -->
-        <!-- <script>
+        <script>
         document.getElementById('picture-input').addEventListener('change', function (event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -79,7 +61,7 @@
             };
             reader.readAsDataURL(file);
         });
-        </script> -->
+        </script>
 
         <!-- ユーザー名 -->
         <div class="form__group">

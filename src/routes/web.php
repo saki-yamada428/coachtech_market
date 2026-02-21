@@ -5,38 +5,8 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// 商品
-// Route::resource('items', ItemController::class);
-
-// お気に入り
-// Route::post('/items/{item}/favorite', [FavoriteController::class, 'store'])
-//     ->name('favorites.store');
-
-// Route::delete('/items/{item}/favorite', [FavoriteController::class, 'destroy'])
-//     ->name('favorites.destroy');
-
-// プロフィール
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-// });
-
-// ログイン・新規登録の画面表示はFortifyServiceProvider.phpに記述
-// ログイン後の画面表示
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/', function () {
-//         return view('items.index');
-//     })->name('home');
-// });
-
 // 商品一覧
-// Route::middleware(['auth'])->group(function () {
-    Route::get('/', [ItemController::class, 'index'])->name('items.index');
-// });
+Route::get('/', [ItemController::class, 'index'])->name('items.index');
 
 // 商品詳細
 Route::get('/items/{id}', [ItemController::class, 'show'])->name('items.show');
@@ -49,7 +19,23 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 // プロフィール編集画面
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 // プロフィール更新
-Route::put('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::post('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 // マイページ画面
 Route::get('/mypage', [ProfileController::class, 'mypage'])->name('mypage');
+
+// 出品ページ画面
+Route::get('/sell', [ItemController::class, 'sell'])->name('sell');
+// 出品機能
+Route::post('/sell', [ItemController::class, 'store'])->name('store');
+
+// 購入画面
+Route::get('/purchase/{id}', [ItemController::class, 'purchase'])->name('items.purchase');
+// 購入ボタン
+Route::post('/purchase/{id}', [ItemController::class, 'sold'])->name('items.sold');
+
+
+// 送付先住所変更画面
+Route::get('/purchase/address/{id}', [ItemController::class, 'edit'])->name('address.edit');
+// 送付先変更ボタン
+Route::put('/purchase/address/{id}', [ItemController::class, 'update'])->name('address.update');

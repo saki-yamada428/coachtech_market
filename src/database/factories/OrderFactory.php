@@ -24,8 +24,8 @@ class OrderFactory extends Factory
             'user_id' => User::factory(),
             'item_id' => Item::factory(),
             'payment_method' => $this->faker->randomElement([
-                'credit_card',
-                'convenience_store',
+                'カード払い',
+                'コンビニ払い',
             ]),
             'postal_code' => $this->faker->postcode(),
             'address' => $this->faker->address(),

@@ -9,6 +9,7 @@ use App\Models\Item;
 
 class ProfileController extends Controller
 {
+    // プロフィール編集画面
     public function edit()
     {
         $user = auth()->user();
@@ -16,7 +17,7 @@ class ProfileController extends Controller
 
         return view('users.profile', compact('user', 'profile'));
     }
-
+    // プロフィール更新ボタン
     public function update(Request $request)
     {
         $user = auth()->user();
@@ -29,25 +30,23 @@ class ProfileController extends Controller
             'postal_code' => 'required|regex:/^\d{3}-\d{4}$/',
             'address' => 'required|string',
             'building' => 'nullable|string',
-        ]);
+            ]);
 
-        // テキスト項目の更新
-        $profile->nickname = $request->nickname;
-        $profile->postal_code = $request->postal_code;
-        $profile->address = $request->address;
-        $profile->building = $request->building;
+            // テキスト項目の更新
+            $profile->nickname = $request->nickname;
+            // $profile->picture =$request->file('picture');
+            $profile->postal_code = $request->postal_code;
+            $profile->address = $request->address;
+            $profile->building = $request->building;
 
-        // 画像が送られてきた場合
-        if ($request->hasFile('picture')) {
-            $path = $request->file('picture')->store('png', 'public');
+            // 画像が送られてきた場合
+            if ($request->hasFile('picture')) {
+            // dd($request->file('picture'));
+
             $profile->picture = $path;
         }
 
-        // dd($request->file('picture'));
-                // dd($request->file('picture'));
-
         $profile->save();
-
 
         return redirect('/')->with('success', 'プロフィールを更新しました');
         // return back()->with('success', 'プロフィールを更新しました');

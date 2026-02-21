@@ -52,6 +52,7 @@
     background: red;
     color: #fff;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .login__link {

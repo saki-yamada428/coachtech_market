@@ -2,6 +2,12 @@
     margin: 0 auto;
     padding: 30px auto;
     /* max-width: 1230px; */
+    /* background-size:cover; */
+}
+@media (max-width: 850px){
+    .mypage__content {
+        max-width: 80%;
+    }
 }
 
 .index__content {
@@ -47,8 +53,8 @@
 }
 
 .item-image {
-    width: 100%;
-    height: 180px;
+    /* width: 100%; */
+    /* height: 180px; */
     object-fit: contain;
     border-radius: 4px;
     background-color: antiquewhite;
@@ -66,19 +72,26 @@
     /* padding: 30px auto; */
     /* background-color: aqua; */
 }
+@media (max-width: 850px){
+    .mypage__heading {
+        gap: 40px;
+    }
+}
 /* プロフィール画像 */
 .heading__picture {
     display: flex;
-    /* width: 30%; */
+    width: 150px;
     /* padding: 30px auto; */
+    aspect-ratio: 1 / 1;
     margin-bottom: 50px;
-    /* background-color: antiquewhite; */
+    background-color: antiquewhite;
 }
 /* 画像登録済 */
 .profile-image {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    /* height: 150px; */
     padding: 30px auto;
+    aspect-ratio: 1 / 1;
     object-fit: cover; /* 画像を丸にフィット */
     border-radius: 50%; /* 画像も丸くする */
 }
@@ -87,12 +100,14 @@
     width: 100%;
     height: 100%;
     padding: 30px auto;
+    aspect-ratio: 1 / 1;
     object-fit: cover; /* 画像を丸にフィット */
     border-radius: 50%; /* 画像も丸くする */
 }
 .default-image {
     width: 150px;
     height: 150px;
+    aspect-ratio: 1 / 1;
     background-color: #e0e0e0; /* 薄いグレー */
     border-radius: 50%; /* 丸くする */
 }
@@ -101,14 +116,20 @@
     font-size: 40px;
     padding-bottom: 40px;
     font-weight: bold;
+    /* width: 35%; */
+}
+@media (max-width: 850px){
+    .heading__user-name {
+        font-size: 30px;
+    }
 }
 /* ボタン */
 .heading__button {
     padding-bottom: 40px;
-    padding-left: 200px;
+    /* padding-left: 10%; */
 }
 .profile-edit-button {
-    margin: 30px 30px;
+    /* margin: 30px 30px; */
     padding: 5px 20px;
     color: red;
     border: red solid 2px;
@@ -117,6 +138,11 @@
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
+}
+@media (max-width: 850px){
+    .profile-edit-button {
+        font-size: 15px;
+    }
 }
 /* ボタンにカーソル合わせた時 */
 .profile-edit-button:hover {

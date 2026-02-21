@@ -14,6 +14,11 @@
     width: 50%;
     text-align: center;
 }
+@media (max-width: 850px){
+    .form {
+        width: 70%;
+    }
+}
 
 .form__group {
     margin-bottom: 20px;

@@ -51,12 +51,16 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    public function favorites(){
-        return $this->belongsToMany(Item::class, 'favorites');
-    }
+    // public function favorites(){
+    //     return $this->belongsToMany(Item::class, 'favorites')
+    //                 ->withTimestamps();
+    // }
+    // ↑の書き方はLaravelのデフォルト規約に沿う場合のみ使える
+    // 中間テーブル名をitem_userにしないとダメ
+    // 今回はfavoriteで作ったので使えない
 
     public function favoriteItems(){
-        return $this->belongsToMany(Item::class, 'favorites')
+        return $this->belongsToMany(Item::class, 'favorites', 'user_id', 'item_id')
                     ->withTimestamps();
     }
 

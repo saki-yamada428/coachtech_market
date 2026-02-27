@@ -23,7 +23,7 @@ class ItemFactory extends Factory
         return [
             'user_id'      => User::inRandomOrder()->first()->id,
             'name'         => $faker->word(),
-            'picture'      => 'storage/png/box_danbo-ru_close.png',
+            'picture'      => 'png/box_danbo-ru_close.png',
             'brand'        => $faker->word(),
             'price'        => $faker->numberBetween(100,10000),
             'description'  => $faker->text(20),

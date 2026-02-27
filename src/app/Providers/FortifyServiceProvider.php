@@ -20,6 +20,13 @@ use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
 use Laravel\Fortify\Contracts\LogoutResponse;
 
+// バリデーション
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -45,6 +52,23 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // バリデーション
+        Fortify::authenticateUsing(function (Request $request) {
+
+            // FormRequest を手動で実行
+            app(LoginRequest::class)->validateResolved();
+
+            // 認証処理
+            $user = User::where('email', $request->email)->first();
+
+            if ($user && Hash::check($request->password, $user->password)) {
+                return $user;
+            }
+
+            return null;
+        });
+
+        // 新規登録処理
         Fortify::createUsersUsing(CreateNewUser::class);
 
         // ▼ 削除：プロフィール更新・パスワード変更・リセット・2FA を使わない

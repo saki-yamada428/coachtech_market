@@ -13,7 +13,7 @@
     <!-- フォーム -->
     <form class="form" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <!-- @method('PUT') -->
+        @method('PUT')
 
         <!-- プロフィール画像 -->
         <div class="form__group">
@@ -24,11 +24,11 @@
                         src="{{ asset('storage/' . $profile->picture) }}"
                         alt="プロフィール画像">
                 @else
-                    <!-- 画像が未設定（デフォルト画像(透明な1×1ピクセルのダミー画像)） -->
+                    <!-- 画像が未設定（デフォルト画像(透明なダミー画像)） -->
                     <div class="default-image">
                         <img id="preview" class="profile-image-default"
-                        src="{{ asset('storage/png/透明画像.png') }}"
-                        alt="デフォルト画像">
+                            src="{{ asset('storage/png/透明画像.png') }}"
+                            alt="デフォルト画像">
                     </div>
                 @endif
 
@@ -39,8 +39,7 @@
                 </button>
 
                 <!-- {{-- 実際の file input（非表示） --}} -->
-                <input id="picture-input" type="file" name="picture"
-                    style="display:none;">
+                <input id="picture-input" type="file" name="picture" hidden>
 
                 <div class="form__error">
                     @error('picture')

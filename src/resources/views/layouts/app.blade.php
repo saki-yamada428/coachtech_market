@@ -23,28 +23,40 @@
                 @if (!request()->is('login','register'))
                 <nav>
                     <ul class="header-nav">
-                        <li class="header-nav__item">
-                            <!-- ログインしていない時 -->
-                            @guest
-                                <a href="/login" class="header-nav__button">ログイン</a>
-                            @endguest
+                        <!-- <li class="header-nav__item"> -->
+                        <div class="header-nav__form">
+                            <!-- 検索バー -->
+                            <form class="header-nav__search" action="{{ route('items.search') }}" method="POST">
+                                @csrf
+                                <input class="search-form" type="text" name="keyword" value="{{ request('keyword') }}" placeholder="なにをお探しですか？">
+                                <button class="search-button" type="submit">検索</button>
+                            </form>
+                        </div>
+                        <!-- </li> -->
+                        <div class="header-nav__right">
+                            <li class="header-nav__item">
+                                <!-- ログインしていない時 -->
+                                @guest
+                                    <a href="/login" class="header-nav__button">ログイン</a>
+                                @endguest
 
-                            <!-- ログインしている時 -->
-                            @auth
-                                <form method="POST" action="/logout">
-                                    @csrf
-                                    <button class="header-nav__button">ログアウト</button>
-                                </form>
-                            @endauth
-                        </li>
+                                <!-- ログインしている時 -->
+                                @auth
+                                    <form method="POST" action="/logout">
+                                        @csrf
+                                        <button class="header-nav__button">ログアウト</button>
+                                    </form>
+                                @endauth
+                            </li>
 
-                        <li class="header-nav__item">
-                            <a class="header-nav__link" href="/mypage">マイページ</a>
-                        </li>
+                            <li class="header-nav__item">
+                                <a class="header-nav__link" href="/mypage">マイページ</a>
+                            </li>
 
-                        <li class="header-nav__item">
-                            <a class="header-nav__button_sell" href="/sell">出品</a>
-                        </li>
+                            <li class="header-nav__item">
+                                <a class="header-nav__button_sell" href="/sell">出品</a>
+                            </li>
+                        </div>
                     </ul>
                 </nav>
                 @endif

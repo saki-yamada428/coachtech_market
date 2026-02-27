@@ -11,4 +11,4 @@ mysql: 8.0.26
 
 php artisan storage:link が必要です。
 
-
+## バリデーション日本語

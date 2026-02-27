@@ -1,14 +1,15 @@
 .mypage__content {
     margin: 0 auto;
-    padding: 30px auto;
+    padding: 30px;
+    /* container-type: inline-size; */
     /* max-width: 1230px; */
     /* background-size:cover; */
 }
-@media (max-width: 850px){
+/* @media (max-width: 850px){
     .mypage__content {
         max-width: 80%;
     }
-}
+} */
 
 .index__content {
     margin: 0;
@@ -37,6 +38,9 @@
     border: none;
     background-color: white;
 }
+.tab__button-submit.active {
+    color: red;
+}
 
 .row {
     margin: 0 auto;
@@ -53,11 +57,17 @@
 }
 
 .item-image {
-    /* width: 100%; */
-    /* height: 180px; */
+    width: 100%;
+    aspect-ratio: 1/1;
     object-fit: contain;
     border-radius: 4px;
     background-color: antiquewhite;
+}
+.card-body {
+    margin-bottom: 20px;
+}
+.sold {
+    margin-left: 5px;
 }
 
 /*ヘッド */
@@ -155,3 +165,4 @@ svg.w-5.h-5 {
     width: 30px;
     height: 30px;
 }
+

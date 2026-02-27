@@ -10,7 +10,7 @@
 
     <!-- {{-- 商品画像 --}} -->
     <div class="item__detail-picture">
-        <img src="{{ asset($item->picture) }}"
+        <img src="{{ $item->picture_url }}"
             class="item-picture"
             alt="{{ $item->name }}">
     </div>
@@ -32,9 +32,25 @@
         <!-- {{-- お気に入り,コメントアイコン --}} -->
         <div class="item__detail-logo">
             <div class="item__detail-logo-heart">
-                <img src="/png/ハートロゴ_デフォルト.png"
-                    class="logo-heart">
-                <span>{{ $item->favorites->count() }}</span>
+                @if ($item->favoredBy->contains(auth()->id()))
+                    <form action="{{ route('favorite.destroy', $item->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <!-- <button type="submit" class="logo-heart">
+                            <img src="/png/ハートロゴ_ピンク.png" alt="お気に入り解除">
+                        </button> -->
+                        <input class="logo-heart" type="image" src="/png/ハートロゴ_ピンク.png">
+                    </form>
+                @else
+                    <form action="{{ route('favorite.store', $item->id) }}" method="POST">
+                        @csrf
+                        <!-- <button type="submit" class="logo-heart">
+                            <img src="/png/ハートロゴ_デフォルト.png" alt="お気に入り">
+                        </button> -->
+                        <input class="logo-heart" type="image" src="/png/ハートロゴ_デフォルト.png">
+                    </form>
+                @endif
+                <span>{{ $item->favoredBy->count() }}</span>
             </div>
             <div class="item__detail-logo-hukidasi">
                 <img src="/png/ふきだしロゴ.png"
@@ -111,11 +127,17 @@
         </div>
 
         <!-- {{-- コメント送信フォーム --}} -->
-        <form class="item__detail-comment">
+        <form class="item__detail-comment" action="{{ route('items.comments', $item->id) }}" method="POST">
+            @csrf
             <h3 class="item__detail-comment-title">
                 商品へのコメント
             </h3>
-            <textarea name="comment-body" class="comment-body"></textarea>
+            <div class="form__error">
+                @error('comment')
+                {{ $message }}
+                @enderror
+            </div>
+            <textarea name="comment" class="comment-body"></textarea>
             <button class="comment-button">
                 コメントを送信する
             </button>

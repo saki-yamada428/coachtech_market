@@ -31,26 +31,74 @@ img.logo {
     }
 }
 
-
+.header-utilities a {
+    width: 30%;
+}
+/* @media (max-width: 1024px){
+    .header-utilities a{
+        width: 30%;
+    }
+} */
 .header-utilities nav {
-    width: 25%;
+    /* padding: 0; */
+    /* margin: 0; */
+    width: 70%;
+    /* background-color: bisque; */
 }
 @media (max-width: 1024px){
     .header-utilities nav{
-        width: 35%;
+        width: 70%;
     }
 }
 
 .header-nav {
+    /* width: 70%; */
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* padding: 0; */
+    /* margin: 0; */
+    /* background-color: aqua; */
+}
+
+.header-nav__form {
+    margin-left: 10px;
+    width: 50%;
+    flex :auto
+}
+/* @media (max-width: 1024px){
+    .header-nav__form {
+        flex :1
+    }
+} */
+.search-form {
+    width: 80%;
+    height: 35px;
+    border-radius: 4px;
+    margin: 0;
+}
+
+.header-nav__right {
+    display: flex;
+    width: 300px;
+    padding: 0 5px;
+    /* flex: 1; */
+    /* background-color: darkcyan; */
+    justify-content: flex-end;
+}
+
+.header-nav__item {
+    margin: 1px 5px;
+    /* flex: 1; */
+    text-align: right;
+    /* justify-content: flex-end; */
+    /* background-color: aliceblue; */
 }
 
 .header-nav__link {
     color: #fff;
     text-decoration: none;
     height: 40px;
+    /* background-color: aqua; */
 }
 
 .header-nav__button {
@@ -61,6 +109,7 @@ img.logo {
     cursor: pointer;
     text-decoration: none;
     /* margin: 0 10px; */
+    /* background-color: blue; */
 }
 
 .header-nav__button_sell {
@@ -69,7 +118,6 @@ img.logo {
     color: black;
     font-size: 16px;
     cursor: pointer;
-    /* width: 70px; */
     text-decoration: none;
     border-radius: 4px;
     padding: 5px 10px;
@@ -81,7 +129,7 @@ img.logo {
 =========================== */
 body {
     font-size: 16px;
-    padding: 24px;
+    /* padding: 0 24px; */
 }
 
 /* ===========================
@@ -91,7 +139,7 @@ body {
 @media (max-width: 1024px) {
     body {
         font-size: 15px;
-        padding: 20px;
+        /* padding: 20px; */
     }
 
     .container {
@@ -106,7 +154,7 @@ body {
 @media (max-width: 768px) {
     body {
         font-size: 14px;
-        padding: 16px;
+        /* padding: 16px; */
     }
 
     .container {

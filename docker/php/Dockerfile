@@ -10,4 +10,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
   && mv composer.phar /usr/local/bin/composer \
   && composer self-update
 
+  # 日本語化
+RUN docker-php-ext-install bcmath
+
 WORKDIR /var/www

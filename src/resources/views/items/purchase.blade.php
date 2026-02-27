@@ -20,7 +20,7 @@
             <div class="item__purchase__title">
                 <!-- {{-- 商品画像 --}} -->
                 <div class="item__detail-picture">
-                    <img src="{{ asset($item->picture) }}"
+                    <img src="{{ $item->picture_url }}"
                         class="item-picture"
                         alt="{{ $item->name }}">
                 </div>
@@ -45,16 +45,16 @@
                 </div>
 
                 <div class="select">
-                    <select class="payment-method" name="payment-method" id="payment-method">
-                        <option hidden>選択してください</option>
+                    <select class="payment_method" name="payment_method" id="payment_method">
+                        <option value="" hidden>選択してください</option>
                         <option value="コンビニ払い">コンビニ払い</option>
                         <option value="カード払い">カード払い</option>
                     </select>
-                </div>
-                <div class="form__error">
-                    @error('address')
+                    <div class="form__error">
+                        @error('payment_method')
                         {{ $message }}
-                    @enderror
+                        @enderror
+                    </div>
                 </div>
             </div>
 
@@ -78,7 +78,7 @@
                         <input type="hidden" name="postal_code"
                             value="{{ session('postal_code', $item->user->profile->postal_code) }}"
                             readonly>
-                            {{ session('postal_code', $item->user->profile->postal_code) }}
+                            {{ session('postal_code', $profile->postal_code) }}
                     </div>
                 </div>
 
@@ -88,14 +88,14 @@
                         <input type="hidden" name="address"
                             value="{{ session('address', $item->user->profile->address) }}"
                             readonly>
-                            {{ session('address', $item->user->profile->address) }}
+                            {{ session('address', $profile->address) }}
                     </div>
                 </div>
 
                 <!-- 建物名 -->
                 <div class="form__group-content">
                     <div class="form__input--text">
-                        {{ session('building', $item->user->profile->building) }}
+                        {{ session('building', $profile->building) }}
                         <input type="hidden" name="building"
                             value="{{ session('building', $item->user->profile->building) }}"
                             readonly>
@@ -122,7 +122,7 @@
                 </div>
                 <!-- リアルタイム反映 -->
                 <script>
-                document.getElementById('payment-method')
+                document.getElementById('payment_method')
                     .addEventListener('change',
                     function() {
                         const selected = this.value;

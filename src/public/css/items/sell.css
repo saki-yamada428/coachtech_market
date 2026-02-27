@@ -41,20 +41,36 @@
 .form__group-picture{
     border: 1px solid #ddd;
     height: 150px;
+    /* background-color: antiquewhite; */
+    position: relative; /* ← 追加：ボタンを中央配置するため */
 }
 .change-picture-btn {
-    display: inline;
+    position: absolute; /* ← 追加 */
+    z-index: 2; /* ← 画像より前面に表示 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 2px solid red;
-    /* padding: 5px 10px; */
     height: 30%;
     width: 25%;
     background-color: white;
     color: red;
-    vertical-align: middle;
-    margin-top: 52px;
     border-radius: 4px;
     font-weight: bold;
+
 }
+.item-image {
+    width: 100%;
+    height: 100%;
+    /* background-color: aliceblue; */
+}
+.preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ← 画像を枠いっぱいに綺麗に表示 */
+    display: block;
+}
+
 
 .sell-detail__title {
     text-align: left;
@@ -178,6 +194,43 @@ select {
     appearance: none;
 }
 
+
+/* .form__input--price::before {
+    content: "￥";
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+} */
+
+.form__input--price {
+    /* padding: 10px; */
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    appearance: none;
+    display: flex;
+    /* content: "￥"; */
+}
+.en {
+    margin: auto;
+    margin-left: 5px;
+    font-size: large;
+    font-weight: bold;
+    flex: 1;
+}
+.form__input--price input {
+    flex: 14;
+    font-size: large;
+    border: none;
+}
+/* input[type="number"] :focus {
+    border: none;
+    outline: none;
+} */
+
 .form__button {
     margin-top: 50px;
 }
@@ -191,23 +244,4 @@ select {
     background: red;
     color: #fff;
     cursor: pointer;
-}
-
-.form__input--price::before {
-    content: "￥";
-    position: absolute;
-    left: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #555;
-}
-
-.form__input--price input {
-    padding: 10px;
-    width: 100%;
-    height: 40px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    appearance: none;
-    content: "￥";
 }

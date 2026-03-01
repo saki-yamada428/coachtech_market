@@ -167,11 +167,14 @@ select {
 .shipping-address__title {
     display: flex;
 }
-.address-change-button {
+.form__label--item__address {
     flex: 2;
-    text-align: right;
 }
-
+.address-change-button {
+    flex: 1;
+    text-align: right;
+    /* background-color: aqua; */
+}
 
 /* 右側 */
 .purchase-check {

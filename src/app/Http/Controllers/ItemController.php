@@ -16,6 +16,10 @@ use App\Http\Requests\ExhibitionRequest;
 use App\Http\Requests\PurchaseRequest;
 use App\Http\Requests\CommentRequest;
 
+// Stripe
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
+
 class ItemController extends Controller
 {
     // 一覧画面表示
@@ -128,13 +132,63 @@ class ItemController extends Controller
     {
         $item = Item::findOrFail($id);
 
-        Order::create([
-            'item_id' => $item->id,
-            'user_id' => auth()->id(),
+        // Order::create([
+        //     'item_id' => $item->id,
+        //     'user_id' => auth()->id(),
+        //     'postal_code' => $request->postal_code,
+        //     'address' => $request->address,
+        //     'building' => $request->building,
+        //     'payment_method' => $request->payment_method,
+        // ]);
+        // return redirect()->route('items.index');
+
+        // 応用（Stripe決済画面遷移）
+        // 住所などは success で使うので session に保存
+        session([
             'postal_code' => $request->postal_code,
             'address' => $request->address,
             'building' => $request->building,
             'payment_method' => $request->payment_method,
+        ]);
+
+        // Stripe の秘密鍵をセット
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        // Stripe Checkout Session を作成
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card', 'konbini'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'jpy',
+                    'product_data' => [
+                        'name' => $item->name,
+                        'description' => $item->description ?? '商品説明なし',
+                    ],
+                    'unit_amount' => (int)$item->price,
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => route('purchase.success', ['id' => $item->id]),
+            'cancel_url' => route('items.purchase', ['id' => $item->id]),
+        ]);
+
+        // Stripe の決済画面へリダイレクト
+        return redirect($session->url);
+    }
+
+    // Stripe決済成功後
+    public function success(Request $request, $id)
+    {
+        $item = Item::findOrFail($id);
+
+        Order::create([
+            'item_id' => $item->id,
+            'user_id' => auth()->id(),
+            'postal_code' => session('postal_code'),
+            'address' => session('address'),
+            'building' => session('building'),
+            'payment_method' => session('payment_method'),
         ]);
 
         return redirect()->route('items.index');

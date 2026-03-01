@@ -29,25 +29,38 @@
                     <div class="col-md-3 mb-4">
                     <!-- 4カラム -->
                         <div class="item">
+                            @if ($item->order)
+                            <!-- 購入済み -->
+                                <!-- {{-- 商品画像 --}} -->
+                                <div class="sold-item">
+                                    <img src="{{ $item->picture_url }}"
+                                        class="item-image"
+                                        alt="{{ $item->name }}">
+                                </div>
 
-                            <!-- {{-- 商品画像 --}} -->
-                            <a href="{{ route('items.show', $item->id) }}">
-                                <img src="{{ $item->picture_url }}"
-                                    class="item-image"
-                                    alt="{{ $item->name }}">
-                            </a>
-
-                            <!-- {{-- 商品名 --}} -->
-                            <div class="card-body">
+                                <!-- {{-- 商品名 --}} -->
+                                <div class="card-body">
+                                    <a class="sold-item">
+                                        <span class="item-name">{{ $item->name }}</span>
+                                    </a>
+                                        <span class="sold">Sold</span>
+                                </div>
+                            @else
+                            <!-- 販売中 -->
+                                <!-- {{-- 商品画像 --}} -->
                                 <a href="{{ route('items.show', $item->id) }}">
-                                    <span class="item-name">{{ $item->name }}</span>
+                                    <img src="{{ $item->picture_url }}"
+                                        class="item-image"
+                                        alt="{{ $item->name }}">
                                 </a>
-                                <!-- 購入済み -->
-                                @if ($item->order)
-                                    <span class="sold">Sold</span>
-                                @endif
-                            </div>
 
+                                <!-- {{-- 商品名 --}} -->
+                                <div class="card-body">
+                                    <a href="{{ route('items.show', $item->id) }}">
+                                        <span class="item-name">{{ $item->name }}</span>
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 @endif
@@ -64,25 +77,38 @@
             <div class="col-md-3 mb-4">
             <!-- 4カラム -->
                 <div class="item">
+                    @if ($item->order)
+                    <!-- 購入済み -->
+                        <!-- {{-- 商品画像 --}} -->
+                        <div class="sold-item">
+                            <img src="{{ $item->picture_url }}"
+                                class="item-image"
+                                alt="{{ $item->name }}">
+                        </div>
 
-                    <!-- {{-- 商品画像 --}} -->
-                    <a href="{{ route('items.show', $item->id) }}">
-                        <img src="{{ $item->picture_url }}"
-                            class="item-image"
-                            alt="{{ $item->name }}">
-                    </a>
-
-                    <!-- {{-- 商品名 --}} -->
-                    <div class="card-body">
+                        <!-- {{-- 商品名 --}} -->
+                        <div class="card-body">
+                            <a class="sold-item">
+                                <span class="item-name">{{ $item->name }}</span>
+                            </a>
+                                <span class="sold">Sold</span>
+                        </div>
+                    @else
+                    <!-- 販売中 -->
+                        <!-- {{-- 商品画像 --}} -->
                         <a href="{{ route('items.show', $item->id) }}">
-                            <span class="item-name">{{ $item->name }}</span>
+                            <img src="{{ $item->picture_url }}"
+                                class="item-image"
+                                alt="{{ $item->name }}">
                         </a>
-                        <!-- 購入済み -->
-                        @if ($item->order)
-                            <span class="sold">Sold</span>
-                        @endif
-                    </div>
 
+                        <!-- {{-- 商品名 --}} -->
+                        <div class="card-body">
+                            <a href="{{ route('items.show', $item->id) }}">
+                                <span class="item-name">{{ $item->name }}</span>
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
         @empty
@@ -109,9 +135,5 @@
             .classList.add('active');
     }
     </script>
-
-    <!-- <div class="mt-4"> -->
-        <!-- {{-- $items->links() --}} -->
-    <!-- </div> -->
 </div>
 @endsection

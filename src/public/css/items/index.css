@@ -48,6 +48,9 @@
     max-width: 20%;
 }
 
+.sold-item {
+    pointer-events: none;
+}
 .item-image {
     width: 100%;
     aspect-ratio: 1/1;

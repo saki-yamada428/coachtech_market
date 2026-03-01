@@ -7,8 +7,7 @@
 
 @section('content')
 <div class="item__purchase">
-    <form class="form"  method="POST">
-    <!-- <form class="form" action="{{-- route('item.sold', $item->id) --}}" method="POST"> -->
+    <form class="form" action="{{ route('items.sold', $item->id) }}" method="POST">
         @csrf
         <input type="hidden" name="user_id" value="{{ $item->user->id }}">
         <input type="hidden" name="item_id" value="{{ $item->id }}">
@@ -62,23 +61,26 @@
             <div class="form__group">
                 <div class="shipping-address__title">
                     <div class="form__group-title">
-                        <span class="form__label--item">配送先</span>
+                        <span class="form__label--item__address">配送先</span>
                     </div>
 
                     <!-- 変更ボタン -->
-                    <a class="address-change-button"
-                        href="{{ url('/purchase/address/' . $item->id) }}">
-                        変更する
-                    </a>
+                    <div class="address-change-button">
+                        <a
+                            href="{{ url('/purchase/address/' . $item->id) }}">
+                            変更する
+                        </a>
+                    </div>
                 </div>
 
                 <!-- 郵便番号 -->
                 <div class="form__group-content">
                     <div class="form__input--text">
                         <input type="hidden" name="postal_code"
-                            value="{{ session('postal_code', $item->user->profile->postal_code) }}"
+                            value="{{ session('postal_code', $profile->postal_code) }}"
                             readonly>
-                            {{ session('postal_code', $profile->postal_code) }}
+                            <!-- value="{{-- session('postal_code', $item->user->profile->postal_code) --}}" -->
+                        {{ session('postal_code', $profile->postal_code) }}
                     </div>
                 </div>
 
@@ -86,19 +88,19 @@
                 <div class="form__group-content">
                     <div class="form__input--text">
                         <input type="hidden" name="address"
-                            value="{{ session('address', $item->user->profile->address) }}"
+                            value="{{ session('address', $profile->address) }}"
                             readonly>
-                            {{ session('address', $profile->address) }}
+                        {{ session('address', $profile->address) }}
                     </div>
                 </div>
 
                 <!-- 建物名 -->
                 <div class="form__group-content">
                     <div class="form__input--text">
-                        {{ session('building', $profile->building) }}
                         <input type="hidden" name="building"
-                            value="{{ session('building', $item->user->profile->building) }}"
+                            value="{{ session('building', $profile->building) }}"
                             readonly>
+                        {{ session('building', $profile->building) }}
                     </div>
                 </div>
             </div>

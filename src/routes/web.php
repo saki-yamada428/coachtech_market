@@ -56,7 +56,8 @@ Route::get('/purchase/{id}', [ItemController::class, 'purchase'])
     ->name('items.purchase');
 // 購入ボタン
 Route::post('/purchase/{id}', [ItemController::class, 'sold'])->name('items.sold');
-
+// Stripe決済成功後
+Route::get('/purchase/{id}/success', [ItemController::class, 'success'])->name('purchase.success');
 
 // 送付先住所変更画面
 Route::get('/purchase/address/{id}', [ItemController::class, 'edit'])->name('address.edit');

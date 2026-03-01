@@ -55,6 +55,9 @@
     flex: 0 0 20%;
     max-width: 20%;
 }
+.item a {
+    pointer-events: none;
+}
 
 .item-image {
     width: 100%;

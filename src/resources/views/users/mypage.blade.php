@@ -59,14 +59,14 @@
                             <div class="item">
 
                                 <!-- {{-- 商品画像 --}} -->
-                                <a href="{{ route('items.show', $item->id) }}">
+                                <a>
                                     <img src="{{ $item->picture_url }}"
                                         class="item-image"
                                         alt="{{ $item->name }}">
                                 </a>
                                 <div class="card-body">
                                     <!-- {{-- 商品名 --}} -->
-                                    <a href="{{ route('items.show', $item->id) }}">
+                                    <a>
                                         <span class="item-name">{{ $item->name }}</span>
                                     </a>
                                     <!-- 購入済み -->
@@ -93,15 +93,15 @@
                             <div class="item">
 
                                 <!-- {{-- 商品画像 --}} -->
-                                <a href="{{ route('items.show', $item->id) }}">
+                                <a>
                                     <img src="{{ $item->picture_url }}"
                                         class="item-image"
                                         alt="{{ $item->name }}">
                                 </a>
                                 <div class="card-body">
                                     <!-- {{-- 商品名 --}} -->
-                                    <a href="{{ route('items.show', $item->id) }}">
-                                        <h5 class="item-name">{{ $item->name }}</h5>
+                                    <a>
+                                        <span class="item-name">{{ $item->name }}</span>
                                     </a>
                                     <!-- 購入済み -->
                                     <span class="sold">Sold</span>

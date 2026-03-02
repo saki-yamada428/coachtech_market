@@ -23,11 +23,8 @@ use Stripe\Checkout\Session;
 class ItemController extends Controller
 {
     // 商品一覧画面表示（トップページ）
-    public function index(Request $request)
+    public function index()
     {
-        // どのタブを開くか（デフォルトは all）
-        $tab = $request->query('tab', 'all');
-
         // 全商品を取得（自分が出品した商品を除く）
         $items = Item::with('order')->get();
 
@@ -36,17 +33,12 @@ class ItemController extends Controller
             $q->where('user_id', auth()->id());
         })->get();
 
-        return view('items.index', compact('items','favoriteItems', 'tab'));
+        return view('items.index', compact('items','favoriteItems'));
     }
 
     // 商品検索機能
     public function search(Request $request)
     {
-        // どのタブを開くか（デフォルトは all）
-        $tab = $request->query('tab', 'all');
-        // タブ移動時に検索ワード引き継ぎ
-        $keyword = $request->query('keyword');
-
         // 全商品を取得
         $query = Item::with('order');
 
@@ -61,13 +53,10 @@ class ItemController extends Controller
         // お気に入り商品取得
         $favoriteItems = Item::whereHas('favoredBy', function ($q) {
             $q->where('user_id', auth()->id());
-        })
-        ->when($keyword, function ($q) use ($keyword) {
-            $q->where('name', 'like', "%{$keyword}%");
-        })
-        ->get();
+        })->get();
+        // $favoriteItems = Item::with('favorites')
 
-        return view('items.index', compact('items','favoriteItems', 'tab'));
+        return view('items.index', compact('items','favoriteItems'));
     }
 
     // 商品詳細画面表示
@@ -81,15 +70,6 @@ class ItemController extends Controller
     // コメント送信
     public function comments(CommentRequest $request, $id)
     {
-        // プロフィール未作成のユーザーのコメント防止
-        $profile = auth()->user()->profile;
-        // プロフィール未登録の場合は編集画面へ遷移
-        if (!$profile){
-        return redirect()->route('profile.edit')
-            ->with('error', 'プロフィールを登録してください。');
-        }
-
-        // ここからコメント送信機能
         $item = Item::findOrFail($id);
 
         $comment = Comment::create([
@@ -104,15 +84,6 @@ class ItemController extends Controller
     // 出品画面表示
     public function sell()
     {
-        // プロフィール未作成のユーザーの出品防止
-        $profile = auth()->user()->profile;
-        // プロフィール未登録の場合は編集画面へ遷移
-        if (!$profile){
-        return redirect()->route('profile.edit')
-            ->with('error', 'プロフィールを登録してください。');
-        }
-
-        // ここから出品画面表示
         $categories = Category::all();
         $conditions = Condition::all();
 
@@ -151,12 +122,6 @@ class ItemController extends Controller
         $user = auth()->user();
         // ログインユーザーに紐づくプロフィール
         $profile = $user->profile;
-
-        // プロフィール未登録の場合は編集画面へ遷移
-        if (!$profile){
-        return redirect()->route('profile.edit')
-            ->with('error', 'プロフィールを登録してください。');
-        }
 
         return view('items.purchase', compact('item','user','profile'));
     }

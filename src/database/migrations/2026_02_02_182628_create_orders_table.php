@@ -19,8 +19,8 @@ return new class extends Migration
             $table->unique(['user_id', 'item_id']);
 
             $table->string('payment_method');
-            $table->string('postal_code',255)->nullable();
-            $table->string('address',255)->nullable();
+            $table->string('postal_code',255);
+            $table->string('address',255);
             $table->string('building', 255)->nullable();
             $table->timestamps();
         });

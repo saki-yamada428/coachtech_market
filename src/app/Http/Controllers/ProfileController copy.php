@@ -54,23 +54,13 @@ class ProfileController extends Controller
     }
 
     // マイページ画面
-    public function mypage(Request $request)
+    public function mypage()
     {
-        // どのタブを開くか（デフォルトは sell）
-        $tab = $request->query('tab', 'sell');
-
         $user = Auth::user();       // ログイン中のユーザー
         $profile = $user->profile;  // リレーションでプロフィール取得
-
-        // プロフィール未登録の場合は編集画面へ遷移
-        if (!$profile){
-        return redirect()->route('profile.edit')
-            ->with('error', 'プロフィールを登録してください。');
-        }
-
         // 全商品を取得
         $items = Item::with('order')->get();
 
-        return view('users.mypage', compact('user', 'profile','items', 'tab'));
+        return view('users.mypage', compact('user', 'profile','items'));
     }
 }

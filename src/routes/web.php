@@ -6,10 +6,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FavoriteController;
 
-// 商品一覧
+// 商品一覧ページ
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
 // 商品検索
-Route::post('/', [ItemController::class, 'search'])->name('items.search');
+Route::get('/search', [ItemController::class, 'search'])->name('items.search');
 
 
 // 商品詳細

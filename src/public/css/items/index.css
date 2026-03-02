@@ -13,6 +13,7 @@
     display: block;
     margin: 0;
     padding: 0px;
+    padding-bottom: 10px;
     border-bottom: 2px solid black;
     width: 100cqw;
     box-sizing:border-box;
@@ -28,7 +29,9 @@
     margin: 0 10px;
     padding: 10px 15px;
     border: none;
-    background-color: white;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
 }
 .tab__button-submit.active {
     color: red;

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'プロフィール画面')
+@section('title', 'マイページ')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/users/mypage.css') }}">
 @endsection
@@ -38,19 +38,19 @@
     <div class="index__content">
         <div class="tab">
             <div class="tab__button">
-                <a href="/mypage?tab=sell" class="tab__button-submit {{ $tab === 'sell' ? 'active' : '' }}">
+                <button class="tab__button-submit active" type="button" onclick="showTab('sell')">
                 <!-- 最初は出品をアクティブ -->
                     出品した商品
-                </a>
-                <a href="/mypage?tab=order" class="tab__button-submit {{ $tab === 'order' ? 'active' : '' }}">
+                </button>
+                <button class="tab__button-submit" type="button" onclick="showTab('order')">
                     購入した商品
-                </a>
+                </button>
             </div>
         </div>
 
         <!-- 商品リスト -->
         <!-- 出品した商品 -->
-        <div class="tab-sell" id="tab-sell" style="{{ $tab === 'sell' ? '' : 'display:none;' }}">
+        <div class="tab-sell" id="tab-sell">
             <div class="row">
                 @forelse ($items as $item)
                     @if ($item->user_id == auth()->id())
@@ -78,13 +78,13 @@
                         </div>
                     @endif
                 @empty
-                    <p></p>
+                    <p>商品がありません。</p>
                 @endforelse
             </div>
         </div>
 
         <!-- 購入した商品 -->
-        <div class="tab-order" id="tab-order" style="{{ $tab === 'order' ? '' : 'display:none;' }}">
+        <div class="tab-order" id="tab-order" style="display:none;">
             <div class="row">
                 @forelse ($items as $item)
                     @if ($item->order && $item->order->user_id == auth()->id())
@@ -110,10 +110,33 @@
                         </div>
                     @endif
                 @empty
-                    <p></p>
+                    <p>商品がありません。</p>
                 @endforelse
             </div>
         </div>
+
+    <!-- タブ切り替え -->
+    <script>
+    function showTab(name) {
+        // タブの中身を切り替え
+        document.getElementById('tab-sell').style.display = 'none';
+        document.getElementById('tab-order').style.display = 'none';
+        document.getElementById('tab-' + name).style.display = 'block';
+
+        // ボタンの active を切り替え
+        document.querySelectorAll('.tab__button-submit').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // 押されたボタンに active を付ける
+        document.querySelector(`button[onclick="showTab('${name}')"]`)
+            .classList.add('active');
+    }
+    </script>
+
+        <!-- <div class="mt-4">
+            {{-- $items->links() --}}
+        </div> -->
     </div>
 </div>
 @endsection

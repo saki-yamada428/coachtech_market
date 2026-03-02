@@ -10,21 +10,19 @@
     <div class="tab">
         <!-- <input type="hidden" name="favorite" value="1"> -->
         <div class="tab__button">
-            <a href="{{ route('items.search', ['keyword' => request('keyword'), 'tab' => 'all']) }}"
-                class="tab__button-submit {{ $tab === 'all' ? 'active' : '' }}">
+            <button class="tab__button-submit active" type="button" onclick="showTab('all')">
                 <!-- 最初はおすすめをアクティブ -->
                 おすすめ
-            </a>
-            <a href="{{ route('items.search', ['keyword' => request('keyword'), 'tab' => 'mylist']) }}"
-                class="tab__button-submit {{ $tab === 'mylist' ? 'active' : '' }}">
+            </button>
+            <button class="tab__button-submit" type="button" onclick="showTab('favorite')">
                 マイリスト
-            </a>
+            </button>
         </div>
     </div>
 
     <!-- 商品リスト -->
     <!-- おすすめ -->
-    <div class="tab-all" id="tab-all" style="{{ $tab === 'all' ? '' : 'display:none;' }}">
+    <div class="tab-all" id="tab-all">
         <div class="row">
             @forelse ($items as $item)
                 @if ($item->user_id !== auth()->id())
@@ -67,13 +65,13 @@
                     </div>
                 @endif
             @empty
-                <p></p>
+                <p>商品がありません。</p>
             @endforelse
         </div>
     </div>
 
     <!-- マイリスト -->
-    <div class="tab-favorite" id="tab-favorite" style="{{ $tab === 'mylist' ? '' : 'display:none;' }}">
+    <div class="tab-favorite" id="tab-favorite" style="display:none;">
         <div class="row">
         @forelse ($favoriteItems as $item)
             <div class="col-md-3 mb-4">
@@ -114,9 +112,28 @@
                 </div>
             </div>
         @empty
-            <p></p>
+            <p>商品がありません。</p>
         @endforelse
         </div>
     </div>
+
+    <!-- タブ切り替え -->
+    <script>
+    function showTab(name) {
+        // タブの中身を切り替え
+        document.getElementById('tab-all').style.display = 'none';
+        document.getElementById('tab-favorite').style.display = 'none';
+        document.getElementById('tab-' + name).style.display = 'block';
+
+        // ボタンの active を切り替え
+        document.querySelectorAll('.tab__button-submit').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // 押されたボタンに active を付ける
+        document.querySelector(`button[onclick="showTab('${name}')"]`)
+            .classList.add('active');
+    }
+    </script>
 </div>
 @endsection

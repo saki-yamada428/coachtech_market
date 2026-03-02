@@ -26,7 +26,7 @@
                         <!-- <li class="header-nav__item"> -->
                         <div class="header-nav__form">
                             <!-- 検索バー -->
-                            <form class="header-nav__search" action="{{ route('items.search') }}" method="POST">
+                            <form class="header-nav__search" action="{{ route('items.search') }}" method="GET">
                                 @csrf
                                 <input class="search-form" type="text" name="keyword" value="{{ request('keyword') }}" placeholder="なにをお探しですか？">
                                 <button class="search-button" type="submit">検索</button>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('name', 255);
-            $table->string('picture')->nullable(); // 画像のパスを保存
+            $table->string('picture');
             $table->string('brand', 255)->nullable();
             $table->string('price', 255);
             $table->string('description', 255);

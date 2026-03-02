@@ -21,3 +21,5 @@ STRIPE_SECRET=sk_test_xxxxx
 $ docker-compose exec php bash
 composer require stripe/stripe-php
 composer dump-autoload
+
+## storageにpng作成

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '配送先住所変更画面')
+@section('title', '住所変更ページ')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/address/edit.css') }}">
 @endsection
@@ -22,7 +22,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="postal_code" value="{{ old('postal_code', $item->user->profile->postal_code) }}">
+                    <input type="text" name="postal_code" value="{{ old('postal_code', Auth::user()->profile->postal_code) }}">
                 </div>
                 <div class="form__error">
                     @error('postal_code')
@@ -39,7 +39,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="address" value="{{ old('address', $item->user->profile->address) }}">
+                    <input type="text" name="address" value="{{ old('address', Auth::user()->profile->address) }}">
                 </div>
                 <div class="form__error">
                     @error('address')
@@ -56,7 +56,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="building" value="{{ old('building', $item->user->profile->building) }}">
+                    <input type="text" name="building" value="{{ old('building', Auth::user()->profile->building) }}">
                 </div>
             </div>
         </div>

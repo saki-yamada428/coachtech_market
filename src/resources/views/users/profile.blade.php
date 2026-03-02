@@ -7,6 +7,12 @@
 
 @section('content')
 <div class="profile-form__content">
+    @if (session('error'))
+    <script>
+        alert("{{ session('error') }}");
+    </script>
+    @endif
+
     <div class="profile-form__heading">
         <h2>プロフィール設定</h2>
     </div>

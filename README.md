@@ -23,3 +23,5 @@ composer require stripe/stripe-php
 composer dump-autoload
 
 ## storageにpng作成
+$ docker-compose exec php bash
+mkdir storage/app/public/png

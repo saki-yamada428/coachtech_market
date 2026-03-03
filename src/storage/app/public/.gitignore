@@ -1,2 +1,5 @@
 *
 !.gitignore
+!png/
+!png/ダミー用プロフィール画像.png
+!png/透明画像.png

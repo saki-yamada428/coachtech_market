@@ -1,0 +1,76 @@
+.index__content {
+    margin: 0 auto;
+    padding: 30px;
+    container-type: inline-size;
+}
+/* @media (max-width: 850px){
+    .index__content {
+        max-width: 80%;
+    }
+} */
+
+.tab {
+    display: block;
+    margin: 0;
+    padding: 0px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+    width: 100cqw;
+    box-sizing:border-box;
+}
+
+.tab__button {
+    margin-left: 15%;
+    padding: 0px 15px;
+    border: none;
+}
+
+.tab__button-submit {
+    margin: 0 10px;
+    padding: 10px 15px;
+    border: none;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+.tab__button-submit.active {
+    color: red;
+}
+
+.row {
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1230px;
+}
+
+.col-md-3 {
+    margin-right: 5%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+.sold-item {
+    pointer-events: none;
+}
+.item-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    border-radius: 4px;
+    background-color: antiquewhite;
+}
+.card-body {
+    margin-bottom: 20px;
+}
+.sold {
+    margin-left: 5px;
+}
+
+/* ページネーション */
+svg.w-5.h-5 {
+    /*paginateメソッドの矢印の大きさ調整のために追加*/
+    width: 30px;
+    height: 30px;
+}

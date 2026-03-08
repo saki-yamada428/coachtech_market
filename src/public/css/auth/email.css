@@ -1,0 +1,27 @@
+.verify-email {
+    margin: 100px auto;
+    padding: 20px auto;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.mailtrap {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: lightgray;
+    border: solid 1px black;
+    border-radius: 4px;
+    color: black;
+}
+
+.resend-mail {
+    padding: 10px auto;
+    border: none;
+    color: blue;
+    margin-top: 50px;
+    background-color: white;
+    cursor: pointer;
+}

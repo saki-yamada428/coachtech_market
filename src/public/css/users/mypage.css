@@ -1,0 +1,174 @@
+.mypage__content {
+    margin: 0 auto;
+    padding: 30px;
+    /* container-type: inline-size; */
+    /* max-width: 1230px; */
+    /* background-size:cover; */
+}
+/* @media (max-width: 850px){
+    .mypage__content {
+        max-width: 80%;
+    }
+} */
+
+.index__content {
+    margin: 0;
+    padding: 30px 0;
+    container-type: inline-size;
+}
+
+.tab {
+    display: block;
+    margin: 0;
+    padding: 0px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+    width: 100cqw;
+    box-sizing:border-box;
+}
+
+.tab__button {
+    margin-left: 15%;
+    padding: 0px 15px;
+    border: none;
+}
+
+.tab__button-submit {
+    margin: 0 10px;
+    padding: 10px 15px;
+    border: none;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.tab__button-submit.active {
+    color: red;
+}
+
+.row {
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1230px;
+}
+
+.col-md-3 {
+    margin-right: 5%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+.item a {
+    pointer-events: none;
+}
+
+.item-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    border-radius: 4px;
+    background-color: antiquewhite;
+}
+.card-body {
+    margin-bottom: 20px;
+}
+.sold {
+    margin-left: 5px;
+}
+
+/*ヘッド */
+.mypage__heading {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center; /* ← 横方向の中央寄せ */
+    align-items: center;     /* ← 縦方向の中央揃え */
+    gap: 80px;               /* ← 要素間の余白（お好みで調整） */
+    text-align: center;
+    width: 100%;
+    /* padding: 30px auto; */
+    /* background-color: aqua; */
+}
+@media (max-width: 850px){
+    .mypage__heading {
+        gap: 40px;
+    }
+}
+/* プロフィール画像 */
+.heading__picture {
+    display: flex;
+    width: 150px;
+    /* padding: 30px auto; */
+    aspect-ratio: 1 / 1;
+    margin-bottom: 50px;
+    background-color: antiquewhite;
+}
+/* 画像登録済 */
+.profile-image {
+    width: 200px;
+    /* height: 150px; */
+    padding: 30px auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover; /* 画像を丸にフィット */
+    border-radius: 50%; /* 画像も丸くする */
+}
+/* 画像未登録 */
+.profile-image-default {
+    width: 100%;
+    height: 100%;
+    padding: 30px auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover; /* 画像を丸にフィット */
+    border-radius: 50%; /* 画像も丸くする */
+}
+.default-image {
+    width: 150px;
+    height: 150px;
+    aspect-ratio: 1 / 1;
+    background-color: #e0e0e0; /* 薄いグレー */
+    border-radius: 50%; /* 丸くする */
+}
+/* ユーザー名 */
+.heading__user-name {
+    font-size: 40px;
+    padding-bottom: 40px;
+    font-weight: bold;
+    /* width: 35%; */
+}
+@media (max-width: 850px){
+    .heading__user-name {
+        font-size: 30px;
+    }
+}
+/* ボタン */
+.heading__button {
+    padding-bottom: 40px;
+    /* padding-left: 10%; */
+}
+.profile-edit-button {
+    /* margin: 30px 30px; */
+    padding: 5px 20px;
+    color: red;
+    border: red solid 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+@media (max-width: 850px){
+    .profile-edit-button {
+        font-size: 15px;
+    }
+}
+/* ボタンにカーソル合わせた時 */
+.profile-edit-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* ページネーション */
+svg.w-5.h-5 {
+    /*paginateメソッドの矢印の大きさ調整のために追加*/
+    width: 30px;
+    height: 30px;
+}
+

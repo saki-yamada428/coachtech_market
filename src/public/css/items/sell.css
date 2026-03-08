@@ -1,0 +1,247 @@
+.sell-form__content {
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 1230px;
+}
+
+.sell__title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+}
+@media (max-width: 850px){
+    .form {
+        width: 70%;
+    }
+}
+
+.form__group {
+    margin-bottom: 20px;
+}
+
+.form__group-title {
+    text-align: left;
+    margin: 20px 0;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.form__error {
+    height: 20px;
+    color: #ff0000;
+    text-align: left;
+}
+
+/* 商品画像 */
+.form__group-picture{
+    border: 1px solid #ddd;
+    height: 150px;
+    /* background-color: antiquewhite; */
+    position: relative; /* ← 追加：ボタンを中央配置するため */
+}
+.change-picture-btn {
+    position: absolute; /* ← 追加 */
+    z-index: 2; /* ← 画像より前面に表示 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid red;
+    height: 30%;
+    width: 25%;
+    background-color: white;
+    color: red;
+    border-radius: 4px;
+    font-weight: bold;
+
+}
+.item-image {
+    width: 100%;
+    height: 100%;
+    /* background-color: aliceblue; */
+}
+.preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ← 画像を枠いっぱいに綺麗に表示 */
+    display: block;
+}
+
+
+.sell-detail__title {
+    text-align: left;
+    border-bottom: 2px solid dimgray;
+    color: dimgray;
+    /* padding-bottom: -10px; */
+    height: 45px;
+    margin: 40px 0px
+}
+
+/* カテゴリー */
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.category-item {
+    position: relative;
+    cursor: pointer;
+}
+.category-item input[type="checkbox"] {
+    display: none; /* チェックボックスを消す */
+}
+.category-item span {
+    display: inline-block;
+    padding: 5px 14px;
+    color: red;
+    border: 2px solid red;
+    border-radius: 50px;
+    transition: 0.2s;
+    margin: 5px;
+}
+/* チェックされた時のデザイン */
+.category-item input[type="checkbox"]:checked + span {
+    background-color: red;
+    color: white;
+    border-color: red;
+}
+
+/*  コンディション */
+.condition {
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+}
+.condition option {
+    background-color: gray;
+    color: white;
+}
+.condition option:hover {
+    background-color: skyblue;
+}
+/* 基本のセレクトボックスのカスタマイズ */
+.select {
+  /* background: #cfcedb;
+  height: 40px;
+  width: 300px; */
+  /* border-radius: 5px; */
+  position: relative;
+  z-index: 1;
+}
+
+.select::after {
+    position: absolute;
+    content: '';
+    width: 8px;
+    height: 8px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%); /*rotate(45deg);*/
+    /* border-bottom: 4px solid black; */
+    /* border-right: 4px solid black; */
+    /* background-color: aqua; */
+        border-style: solid;
+    border-width: 15px 8px 0 8px;
+    border-color: #333 transparent transparent transparent;
+    z-index: -1;
+}
+.option::before {
+    content: '✓';
+    display: none;
+    width: 8px;
+    height: 8px;
+    right: 10px;
+    top: 50%;
+    background-color: aqua;
+    z-index: 1;
+}
+select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+}
+
+/* 文字入力欄 */
+.form__input--text input {
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    appearance: none;
+}
+
+.form__input--text textarea {
+    padding: 10px;
+    width: 100%;
+    height: 80px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    appearance: none;
+}
+
+
+/* .form__input--price::before {
+    content: "￥";
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+} */
+
+.form__input--price {
+    /* padding: 10px; */
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    appearance: none;
+    display: flex;
+    /* content: "￥"; */
+}
+.en {
+    margin: auto;
+    margin-left: 5px;
+    font-size: large;
+    font-weight: bold;
+    flex: 1;
+}
+.form__input--price input {
+    flex: 14;
+    font-size: large;
+    border: none;
+}
+/* input[type="number"] :focus {
+    border: none;
+    outline: none;
+} */
+
+.form__button {
+    margin-top: 50px;
+}
+
+.form__button-submit {
+    padding: 10px;
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 3px;
+    background: red;
+    color: #fff;
+    cursor: pointer;
+}

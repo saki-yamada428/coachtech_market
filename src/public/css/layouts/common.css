@@ -1,0 +1,191 @@
+.header {
+    background: #000;
+    background-size:cover;
+    /* max-width: 1230px; */
+}
+
+.header__inner {
+    margin: 0 auto;
+    padding: 0px 15px;
+}
+
+.header-utilities {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 10px 15px;
+}
+img.logo {
+    width: 100%;
+}
+@media (max-width: 1024px){
+    img.logo {
+        width: 70%;
+    }
+}
+
+.header-utilities a {
+    width: 30%;
+}
+/* @media (max-width: 1024px){
+    .header-utilities a{
+        width: 30%;
+    }
+} */
+.header-utilities nav {
+    /* padding: 0; */
+    /* margin: 0; */
+    width: 70%;
+    /* background-color: bisque; */
+}
+@media (max-width: 1024px){
+    .header-utilities nav{
+        width: 70%;
+    }
+}
+
+.header-nav {
+    /* width: 70%; */
+    display: flex;
+    align-items: center;
+    /* padding: 0; */
+    /* margin: 0; */
+    /* background-color: aqua; */
+}
+
+.header-nav__form {
+    margin-left: 10px;
+    width: 50%;
+    flex :auto
+}
+/* @media (max-width: 1024px){
+    .header-nav__form {
+        flex :1
+    }
+} */
+.search-form {
+    width: 80%;
+    height: 35px;
+    border-radius: 4px;
+    margin: 0;
+}
+
+.header-nav__right {
+    display: flex;
+    width: 300px;
+    padding: 0 5px;
+    /* flex: 1; */
+    /* background-color: darkcyan; */
+    justify-content: flex-end;
+}
+
+.header-nav__item {
+    margin: 1px 5px;
+    /* flex: 1; */
+    text-align: right;
+    /* justify-content: flex-end; */
+    /* background-color: aliceblue; */
+}
+
+.header-nav__link {
+    color: #fff;
+    text-decoration: none;
+    height: 40px;
+    /* background-color: aqua; */
+}
+
+.header-nav__button {
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    /* margin: 0 10px; */
+    /* background-color: blue; */
+}
+
+.header-nav__button_sell {
+    border: none;
+    background: white;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+/* ===========================
+    PC（デフォルト）
+    1025px 以上
+=========================== */
+body {
+    font-size: 16px;
+    /* padding: 0 24px; */
+}
+
+/* ===========================
+    タブレット
+    768px ～ 1024px
+=========================== */
+@media (max-width: 1024px) {
+    body {
+        font-size: 15px;
+        /* padding: 20px; */
+    }
+
+    .container {
+        max-width: 90%;
+    }
+}
+
+/* ===========================
+    スマホ（必要なら）
+    768px 以下
+=========================== */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        /* padding: 16px; */
+    }
+
+    .container {
+        max-width: 100%;
+    }
+}
+
+/* 画像は縮む */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* コンテナは可変にする */
+.container {
+    width: 100%;
+    max-width: 1200px; /* PC の最大幅 */
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Flex は折り返し可能に */
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Grid は自動調整 */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}

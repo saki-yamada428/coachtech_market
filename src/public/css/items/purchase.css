@@ -8,34 +8,26 @@
 .item__purchase__left {
     max-width: 60%;
     flex: 1;
-    /* background-color: palevioletred; */
 }
 .item__purchase__right {
     max-width: 40%;
     flex: 2;
     padding-left: 30px;
-    /* background-color: paleturquoise; */
 }
 .item__purchase__title {
-    /* margin-bottom: 10px; */
     margin: 0px auto;
     padding: 30px 0;
-    /* text-align: left; */
     display: flex;
-    /* background-color: paleturquoise; */
     border-bottom: 2px solid #333;
 }
 
 /* 画像 */
 .item__detail-picture {
-    /* display: flex; */
-    /* flex: 1; */
     width: 30%;
     background-color: peru;
 }
 .item-picture {
     width: 100%;
-    /* max-height: 500px; */
     aspect-ratio: 1 / 1;
     object-fit: contain;
     background-color: antiquewhite;
@@ -48,21 +40,17 @@
 }
 .item__detail-name {
     display: flex;
-    /* background-color: aquamarine; */
 }
 .item__detail-price {
     font-size: 30px;
     text-align: left;
-    /* background-color: palegreen; */
 }
 
 
 /* フォーム */
 .form {
-    /* margin: 0 20px; */
     width: 100%;
     text-align: center;
-    /* display: block; */
     display: flex;
 }
 .form__error {
@@ -71,11 +59,9 @@
     text-align: left;
 }
 .form__group {
-    /* margin: 20px 0; */
     padding: 30px;
     border-bottom: 2px solid #333;
     width: 100%;
-    /* background-color: paleturquoise; */
 }
 .form__group-title {
     text-align: left;
@@ -173,7 +159,6 @@ select {
 .address-change-button {
     flex: 1;
     text-align: right;
-    /* background-color: aqua; */
 }
 
 /* 右側 */

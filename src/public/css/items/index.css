@@ -3,11 +3,6 @@
     padding: 30px;
     container-type: inline-size;
 }
-/* @media (max-width: 850px){
-    .index__content {
-        max-width: 80%;
-    }
-} */
 
 .tab {
     display: block;

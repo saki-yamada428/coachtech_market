@@ -23,7 +23,6 @@
                 @if (!request()->is('login','register','email/verify'))
                 <nav>
                     <ul class="header-nav">
-                        <!-- <li class="header-nav__item"> -->
                         <div class="header-nav__form">
                             <!-- 検索バー -->
                             <form class="header-nav__search" action="{{ route('items.search') }}" method="GET">
@@ -32,7 +31,6 @@
                                 <button class="search-button" type="submit">検索</button>
                             </form>
                         </div>
-                        <!-- </li> -->
                         <div class="header-nav__right">
                             <li class="header-nav__item">
                                 <!-- ログインしていない時 -->

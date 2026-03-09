@@ -8,7 +8,6 @@
 @section('content')
 <div class="index__content">
     <div class="tab">
-        <!-- <input type="hidden" name="favorite" value="1"> -->
         <div class="tab__button">
             <a href="{{ route('items.search', ['keyword' => request('keyword'), 'tab' => 'all']) }}"
                 class="tab__button-submit {{ $tab === 'all' ? 'active' : '' }}">
@@ -75,47 +74,47 @@
     <!-- マイリスト -->
     <div class="tab-favorite" id="tab-favorite" style="{{ $tab === 'mylist' ? '' : 'display:none;' }}">
         <div class="row">
-        @forelse ($favoriteItems as $item)
-            <div class="col-md-3 mb-4">
-            <!-- 4カラム -->
-                <div class="item">
-                    @if ($item->order)
-                    <!-- 購入済み -->
-                        <!-- {{-- 商品画像 --}} -->
-                        <div class="sold-item">
-                            <img src="{{ $item->picture_url }}"
-                                class="item-image"
-                                alt="{{ $item->name }}">
-                        </div>
+            @forelse ($favoriteItems as $item)
+                <div class="col-md-3 mb-4">
+                <!-- 4カラム -->
+                    <div class="item">
+                        @if ($item->order)
+                        <!-- 購入済み -->
+                            <!-- {{-- 商品画像 --}} -->
+                            <div class="sold-item">
+                                <img src="{{ $item->picture_url }}"
+                                    class="item-image"
+                                    alt="{{ $item->name }}">
+                            </div>
 
-                        <!-- {{-- 商品名 --}} -->
-                        <div class="card-body">
-                            <a class="sold-item">
-                                <span class="item-name">{{ $item->name }}</span>
-                            </a>
-                                <span class="sold">Sold</span>
-                        </div>
-                    @else
-                    <!-- 販売中 -->
-                        <!-- {{-- 商品画像 --}} -->
-                        <a href="{{ route('items.show', $item->id) }}">
-                            <img src="{{ $item->picture_url }}"
-                                class="item-image"
-                                alt="{{ $item->name }}">
-                        </a>
-
-                        <!-- {{-- 商品名 --}} -->
-                        <div class="card-body">
+                            <!-- {{-- 商品名 --}} -->
+                            <div class="card-body">
+                                <a class="sold-item">
+                                    <span class="item-name">{{ $item->name }}</span>
+                                </a>
+                                    <span class="sold">Sold</span>
+                            </div>
+                        @else
+                        <!-- 販売中 -->
+                            <!-- {{-- 商品画像 --}} -->
                             <a href="{{ route('items.show', $item->id) }}">
-                                <span class="item-name">{{ $item->name }}</span>
+                                <img src="{{ $item->picture_url }}"
+                                    class="item-image"
+                                    alt="{{ $item->name }}">
                             </a>
-                        </div>
-                    @endif
+
+                            <!-- {{-- 商品名 --}} -->
+                            <div class="card-body">
+                                <a href="{{ route('items.show', $item->id) }}">
+                                    <span class="item-name">{{ $item->name }}</span>
+                                </a>
+                            </div>
+                        @endif
+                    </div>
                 </div>
-            </div>
-        @empty
-            <p></p>
-        @endforelse
+            @empty
+                <p></p>
+            @endforelse
         </div>
     </div>
 </div>

@@ -66,6 +66,11 @@ class User extends Authenticatable implements MustVerifyEmail
                     ->withTimestamps();
     }
 
+    // 表記ゆれの訂正
+    public function favorites(){
+    return $this->favoriteItems();
+}
+
     public function comments() {
         return $this->hasMany(Comment::class);
     }

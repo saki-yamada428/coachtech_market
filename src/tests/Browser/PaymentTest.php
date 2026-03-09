@@ -60,12 +60,12 @@ class PaymentTest extends TestCase
         $response->assertSee('未選択');
     }
 
-    // public function test_payment_method_realtime_update()
-    // {
-    //     $this->browse(function (Browser $browser) {
-    //         $browser->visit('/purchase/1')
-    //             ->select('#payment_method', 'card')
-    //             ->assertSeeIn('#paymentSummary', 'card');
-    //     });
-    // }
+    public function test_payment_method_realtime_update()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/purchase/1')
+                ->select('#payment_method', 'card')
+                ->assertSeeIn('#paymentSummary', 'card');
+        });
+    }
 }

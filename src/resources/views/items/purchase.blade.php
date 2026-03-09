@@ -79,7 +79,6 @@
                         <input type="hidden" name="postal_code"
                             value="{{ session('postal_code', $profile->postal_code) }}"
                             readonly>
-                            <!-- value="{{-- session('postal_code', $item->user->profile->postal_code) --}}" -->
                         {{ session('postal_code', $profile->postal_code) }}
                     </div>
                 </div>
@@ -114,7 +113,6 @@
                     <p class="check-title">商品代金</p>
                     <div class="check-content">
                         ¥{{ number_format($item->price) }}
-                        <!-- <p class="tax">(税込)</p> -->
                     </div>
                 </div>
                 <!-- 支払い方法 -->

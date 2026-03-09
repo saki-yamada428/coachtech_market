@@ -1,15 +1,7 @@
 .mypage__content {
     margin: 0 auto;
     padding: 30px;
-    /* container-type: inline-size; */
-    /* max-width: 1230px; */
-    /* background-size:cover; */
 }
-/* @media (max-width: 850px){
-    .mypage__content {
-        max-width: 80%;
-    }
-} */
 
 .index__content {
     margin: 0;
@@ -85,8 +77,6 @@
     gap: 80px;               /* ← 要素間の余白（お好みで調整） */
     text-align: center;
     width: 100%;
-    /* padding: 30px auto; */
-    /* background-color: aqua; */
 }
 @media (max-width: 850px){
     .mypage__heading {
@@ -97,15 +87,12 @@
 .heading__picture {
     display: flex;
     width: 150px;
-    /* padding: 30px auto; */
     aspect-ratio: 1 / 1;
     margin-bottom: 50px;
-    background-color: antiquewhite;
 }
 /* 画像登録済 */
 .profile-image {
     width: 200px;
-    /* height: 150px; */
     padding: 30px auto;
     aspect-ratio: 1 / 1;
     object-fit: cover; /* 画像を丸にフィット */
@@ -132,7 +119,6 @@
     font-size: 40px;
     padding-bottom: 40px;
     font-weight: bold;
-    /* width: 35%; */
 }
 @media (max-width: 850px){
     .heading__user-name {
@@ -142,10 +128,8 @@
 /* ボタン */
 .heading__button {
     padding-bottom: 40px;
-    /* padding-left: 10%; */
 }
 .profile-edit-button {
-    /* margin: 30px 30px; */
     padding: 5px 20px;
     color: red;
     border: red solid 2px;

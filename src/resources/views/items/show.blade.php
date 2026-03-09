@@ -36,17 +36,11 @@
                     <form action="{{ route('favorite.destroy', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <!-- <button type="submit" class="logo-heart">
-                            <img src="/png/ハートロゴ_ピンク.png" alt="お気に入り解除">
-                        </button> -->
                         <input class="logo-heart" type="image" src="/png/ハートロゴ_ピンク.png">
                     </form>
                 @else
                     <form action="{{ route('favorite.store', $item->id) }}" method="POST">
                         @csrf
-                        <!-- <button type="submit" class="logo-heart">
-                            <img src="/png/ハートロゴ_デフォルト.png" alt="お気に入り">
-                        </button> -->
                         <input class="logo-heart" type="image" src="/png/ハートロゴ_デフォルト.png">
                     </form>
                 @endif

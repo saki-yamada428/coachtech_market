@@ -7,37 +7,43 @@ Laravel: 12.*
 nginx: 1.21.1  
 mysql: 8.0.26
 
-### ログイン認証技術
-    fortify
-### バリデーション技術
-    formrequest
-### 決済技術
-    Stripe
-### メール認証技術
-    mailtrap
+#### ログイン認証技術
+fortify
+
+#### バリデーション技術
+formrequest
+
+#### 決済技術
+Stripe
+
+#### メール認証技術
+mailtrap
+
+#### テスト技術
+Dusk
 
 
 ## 環境構築
 git clone  
 PC上でDockerアプリを起動  
 
-#### Docker設定
+### Docker設定
 docker-compose up -d --build  
 docker-compose exec php bash  
 
-#### Laravelセットアップ
+### Laravelセットアップ
 composer install  
 cp .env.example .env
 
-##### APP_KEY の作成
+#### APP_KEY の作成
 php artisan key:generate
 
-##### 変更権限の付与
+#### 変更権限の付与
 exit  
 sudo chmod -R 777 *  
 code .
 
-##### .env の書き変え
+#### .env の書き変え
 APP_LOCALE=ja  
 APP_FAKER_LOCALE=ja_JP
 
@@ -56,26 +62,26 @@ MAIL_USERNAME="xxx" <- 記入
 MAIL_PASSWORD="xxx" <- 記入  
 MAIL_FROM_ADDRESS="no-reply@example"
 
-##### .env に追記　Stripeテストキー設定
+#### .env に追記　Stripeテストキー設定
 STRIPE_KEY="xxx" <- 記入  
 STRIPE_SECRET="xxx" <- 記入
 
-#### Stripeインストール
+### Stripeインストール
 docker-compose exec php bash  
 composer require stripe/stripe-php  
 composer dump-autoload
 
-#### Dusk インストール
+### Dusk インストール
 composer require --dev laravel/dusk  
 php artisan dusk:install
 
-##### Duskの実行
+#### Duskの実行
 php artisan dusk
 
-#### ストレージディレクトリと公開ディレクトリの結び付け
+### ストレージディレクトリと公開ディレクトリの結び付け
 php artisan storage:link
 
-#### ダミーデータ作成
+### ダミーデータ作成
 php artisan migrate  
 php artisan db:seed
 
